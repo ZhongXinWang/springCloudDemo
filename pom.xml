@@ -13,7 +13,7 @@
 	<artifactId>springCloudDemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springCloudDemo</name>
-	<description>spring  clould  测试项目</description>
+	<description>spring  cloud  测试项目</description>
 
 	<properties>
 		<java.version>1.8</java.version>

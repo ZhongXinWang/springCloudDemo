@@ -1,0 +1,13 @@
+#  应用名称
+spring:
+  application:
+    name: eureka server
+  # 启动端口
+server:
+  port: 8761
+eureka:
+  #  作为服务端，不需要注册客户端，设置为false
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
