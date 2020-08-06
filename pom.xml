@@ -81,5 +81,6 @@
 	<modules>
 		<module>eureka</module>
         <module>system</module>
-    </modules>
+		<module>gateway</module>
+	</modules>
 </project>
