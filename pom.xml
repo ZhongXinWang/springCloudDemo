@@ -80,5 +80,6 @@
 	</pluginRepositories>
 	<modules>
 		<module>eureka</module>
-	</modules>
+        <module>system</module>
+    </modules>
 </project>
