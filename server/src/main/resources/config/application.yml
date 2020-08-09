@@ -1,0 +1,16 @@
+#  应用名称
+spring:
+  application:
+    name: server
+  datasource: #数据库连接
+    url: jdbc:mysql://localhost:3306/course?useUnicode=true&characterEncoding=utf8
+    username: course
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+# 增加mybatis mapper包下打印日志配置trace  最高级别打印日志
+logging:
+  level:
+    com.course.server.mapper: trace

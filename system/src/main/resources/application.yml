@@ -2,11 +2,6 @@
 spring:
   application:
     name: system
-  datasource: #数据库连接
-    url: jdbc:mysql://localhost:3306/course?useUnicode=true&characterEncoding=utf8
-    username: course
-    password: root
-    driver-class-name: com.mysql.jdbc.Driver
 
 server:
   port: 9001 # 启动端口
@@ -17,10 +12,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-
-# 增加mybatis mapper包下打印日志配置trace  最高级别打印日志
-logging:
-  level:
-    com.course.server.mapper: trace
