@@ -45,6 +45,12 @@
 				<version>1.18.12</version>
 				<scope>provided</scope>
 			</dependency>
+			<!--公共server模块-->
+			<dependency>
+				<groupId>com.course</groupId>
+				<artifactId>server</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
