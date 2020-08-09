@@ -19,3 +19,8 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+
+# 增加mybatis mapper包下打印日志配置trace  最高级别打印日志
+logging:
+  level:
+    com.course.system.mapper: trace
