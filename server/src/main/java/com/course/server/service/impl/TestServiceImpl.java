@@ -23,6 +23,6 @@ public class TestServiceImpl  implements TestService {
 
     @Override
     public List<Test> list() {
-        return testMapper.list();
+        return testMapper.selectByExample(null);
     }
 }
