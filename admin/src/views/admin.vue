@@ -377,19 +377,19 @@
 
                         <ul class="submenu">
                             <li class="">
-                                <a href="#" class="dropdown-toggle">
+                                <a href="/admin/welcome">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     用户管理
                                 </a>
+
                                 <b class="arrow"></b>
                             </li>
 
                             <li class="">
-                                <a href="typography.html">
+                                <a href="/admin/welcome">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     权限管理
                                 </a>
-
                                 <b class="arrow"></b>
                             </li>
                         </ul>
@@ -407,8 +407,8 @@
                     <div class="page-content">
                         <div class="row">
                             <div class="col-xs-12">
-                                <!-- PAGE CONTENT BEGINS -->
-
+                                <!-- PAGE CONTENT BEGINS  -->
+                                <router-view/>
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
                         </div><!-- /.row -->
