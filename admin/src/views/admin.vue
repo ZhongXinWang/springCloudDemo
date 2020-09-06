@@ -355,15 +355,15 @@
 
                 <ul class="nav nav-list">
                     <li class="">
-                        <a href="index.html">
+                        <router-link to="/admin/welcome">
                             <i class="menu-icon fa fa-tachometer"></i>
-                            <span class="menu-text"> Dashboard </span>
-                        </a>
+                            <span class="menu-text"> 欢迎 </span>
+                        </router-link>
 
                         <b class="arrow"></b>
                     </li>
 
-                    <li class="active open">
+                    <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-desktop"></i>
                             <span class="menu-text">
@@ -377,19 +377,41 @@
 
                         <ul class="submenu">
                             <li class="">
-                                <a href="/admin/welcome">
+                                <router-link to="/admin/welcome">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     用户管理
-                                </a>
-
+                                </router-link>
                                 <b class="arrow"></b>
                             </li>
 
                             <li class="">
-                                <a href="/admin/welcome">
+                                <router-link to="/admin/welcome">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     权限管理
-                                </a>
+                                </router-link>
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="active open">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-desktop"></i>
+                            <span class="menu-text">
+								业务管理
+							</span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="">
+                                <router-link to="/admin/chapter">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    大章管理
+                                </router-link>
                                 <b class="arrow"></b>
                             </li>
                         </ul>
