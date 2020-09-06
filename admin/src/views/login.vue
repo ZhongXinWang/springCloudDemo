@@ -46,12 +46,15 @@
  													<div class="clearfix">
  														<label class="inline">
  															<input type="checkbox" class="ace" />
- 															<span class="lbl"> Remember Me</span>
+ 															<span class="lbl">记住我</span>
  														</label>
 
- 														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+ 														<button type="button"
+																class="width-35 pull-right btn btn-sm btn-primary"
+																v-on:click="login()">
+															<!--绑定事件-->
  															<i class="ace-icon fa fa-key"></i>
- 															<span class="bigger-110">Login</span>
+ 															<span class="bigger-110">登录</span>
  														</button>
  													</div>
 
@@ -69,5 +72,21 @@
  		</div><!-- /.main-container -->
 </template>
 <script>
-    $("body").attr("class", "login-layout light-login");
+
+    // 对外默认提供的接口
+    export default {
+        name: "login",
+		mounted() {
+			$("body").removeAttr("no-skin");
+			$("body").attr("class", "login-layout light-login");
+		},
+		// 事件执行方法
+		methods:{
+			login(){
+				console.log('登录')
+				// 跳转到首页
+				this.$router.push("admin")
+			}
+		}
+	}
 </script>
