@@ -83,9 +83,9 @@
 		// 事件执行方法
 		methods:{
 			login(){
-				console.log('登录')
+				let _this = this;
 				// 跳转到首页
-				this.$router.push("admin")
+				_this.$router.push("admin")
 			}
 		}
 	}

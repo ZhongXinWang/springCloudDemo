@@ -354,7 +354,7 @@
                 </div><!-- /.sidebar-shortcuts -->
 
                 <ul class="nav nav-list">
-                    <li class="">
+                    <li class="active" id="welcome-sidebar">
                         <router-link to="/admin/welcome">
                             <i class="menu-icon fa fa-tachometer"></i>
                             <span class="menu-text"> 欢迎 </span>
@@ -376,7 +376,7 @@
                         <b class="arrow"></b>
 
                         <ul class="submenu">
-                            <li class="">
+                            <li class="" id="system-user-sidebar">
                                 <router-link to="/admin/welcome">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     用户管理
@@ -384,7 +384,7 @@
                                 <b class="arrow"></b>
                             </li>
 
-                            <li class="">
+                            <li class="" id="system-auth-sidebar">
                                 <router-link to="/admin/welcome">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     权限管理
@@ -394,7 +394,7 @@
                         </ul>
                     </li>
 
-                    <li class="active open">
+                    <li class="open">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-desktop"></i>
                             <span class="menu-text">
@@ -407,8 +407,8 @@
                         <b class="arrow"></b>
 
                         <ul class="submenu">
-                            <li class="">
-                                <router-link to="/admin/chapter">
+                            <li class="" id="business-chapter-sidebar">
+                                <router-link to="/admin/business/chapter">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     大章管理
                                 </router-link>
@@ -462,8 +462,45 @@
         name: "admin",
         //  渲染时先执行的方法
         mounted() {
+            //  保留对象副本
+            let _this = this;
             $("body").removeAttr("login-layout light-login");
             $("body").attr("class", "no-skin");
+            // 激活左侧菜单
+            _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
+        },
+        // 监听路由变化
+        watch:{
+            $route:{
+                handler(val, oldVal) {
+                    // sidebar激活样式方法二
+                    console.log("---->页面跳转：", val, oldVal);
+                    let _this = this;
+                    _this.$nextTick(function(){  //页面加载完成后执行
+                        _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
+                    })
+                }
+            }
+        }
+        ,
+        methods:{
+            /**
+             * 菜单激活样式，id是当前点击的菜单的id
+             * @param id
+             */
+            activeSidebar:function(id){
+                // 兄弟菜单去掉active样式，自身增加active样式
+                $("#" + id).siblings().removeClass("active");
+                $("#" + id).siblings().find("li").removeClass("active");
+                $("#" + id).addClass("active");
+                // 如果有父菜单，父菜单的兄弟菜单去掉open active，父菜单增加open active
+                let parentLi = $("#" + id).parents("li");
+                if (parentLi) {
+                    parentLi.siblings().removeClass("open active");
+                    parentLi.siblings().find("li").removeClass("active");
+                    parentLi.addClass("open active");
+                }
+            }
         }
     }
 </script>
