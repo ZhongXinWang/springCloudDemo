@@ -1,8 +1,6 @@
 package com.course.server.service;
 
-import com.course.server.entity.Chapter;
-
-import java.util.List;
+import com.course.server.dto.PageDto;
 
 /**
 * 大章服务接口
@@ -12,6 +10,6 @@ import java.util.List;
 **/
 public interface ChapterService {
 
-    List<Chapter> list();
+    void list(PageDto pageDto);
 
 }

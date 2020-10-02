@@ -1,5 +1,12 @@
 <template>
         <div>
+            <p>
+                <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
+                    <i class="ace-icon fa fa-refresh"></i>
+                    刷新
+                </button>
+            </p>
+            <pagination  ref="pagination" v-bind:list="list"/>
             <table id="simple-table" class="table  table-bordered table-hover">
                 <thead>
                 <tr>
@@ -72,8 +79,11 @@
         </div>
 </template>
 <script>
+    // 导入分页组件
+    import Pagination from "../../components/pagination";
     export default {
         name:"chapter",
+        components:{Pagination},
         data:function(){
             return{
                 chapters:[]
@@ -81,10 +91,23 @@
         },
         mounted() {
             let _this = this;
-            _this.$ajax.get("http://127.0.0.1:9002/business/admin/chapter/list")
-                .then(function(res){
-                   _this.chapters = res.data;
+            _this.list(1)
+        },
+        methods:{
+            list(pageNum){
+                let _this = this;
+                //  请求的是网关地址
+                _this.$ajax.post("http://127.0.0.1:9000/business/admin/chapter/list",
+                    {
+                        pageNum: pageNum,
+                        //  获取子组件的参数
+                        pageSize: _this.$refs.pagination.size
+                    }).then(function(resp) {
+                    _this.chapters = resp.data.list;
+                    // 调用子组件方法重新渲染参数
+                    _this.$refs.pagination.render(pageNum,resp.data.total);
                 })
+            }
         }
     }
 </script>

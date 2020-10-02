@@ -1,12 +1,11 @@
 package com.course.business.controller.admin;
 
-import com.course.server.entity.Chapter;
+import com.course.server.dto.PageDto;
 import com.course.server.service.ChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
 * 大章controller
@@ -21,8 +20,16 @@ public class ChapterController {
     @Autowired
     private ChapterService chapterService;
 
+    /**
+     * 获取列表
+     * @param pageDto
+     * @return
+     */
     @RequestMapping("/list")
-    public List<Chapter> list(){
-        return chapterService.list();
+    public PageDto list(@RequestBody  PageDto pageDto){
+
+        chapterService.list(pageDto);
+
+        return pageDto;
     }
 }

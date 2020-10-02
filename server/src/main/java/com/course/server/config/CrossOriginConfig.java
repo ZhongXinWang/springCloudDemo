@@ -1,17 +1,16 @@
 package com.course.server.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
-* AJAX请求跨域
+* AJAX请求跨域,该方法放在网关工程去拦截
 * @author Winston.Wang
 * @date 2020/9/20
 * @version 1.0
 **/
-@Configuration
+/*@Configuration*/
 public class CrossOriginConfig  implements WebMvcConfigurer {
 
     @Override
