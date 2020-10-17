@@ -144,7 +144,7 @@
                     return;
                 }
                 Loading.show();
-                _this.$ajax.post("http://127.0.0.1:9000/business/admin/chapter/save", _this.chapter
+                _this.$ajax.post(process.env.VUE_APP_SERVER+"/business/admin/chapter/save", _this.chapter
                     ).then(function(resp) {
                         Loading.hide();
                         if(resp.data.isSuccess){
@@ -161,7 +161,7 @@
                 let _this = this;
                 Confirm.show("删除后不可恢复!",function () {
                     Loading.show();
-                    _this.$ajax.delete("http://127.0.0.1:9000/business/admin/chapter/delete/"+id)
+                    _this.$ajax.delete(process.env.VUE_APP_SERVER+"/business/admin/chapter/delete/"+id)
                         .then(function(resp) {
                             Loading.hide();
                             if(resp.data.isSuccess){
@@ -177,7 +177,7 @@
                 let _this = this;
                 Loading.show();
                 //  请求的是网关地址
-                _this.$ajax.post("http://127.0.0.1:9000/business/admin/chapter/list",
+                _this.$ajax.post(process.env.VUE_APP_SERVER+"/business/admin/chapter/list",
                     {
                         pageNum: pageNum,
                         //  获取子组件的参数
