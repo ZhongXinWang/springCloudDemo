@@ -184,10 +184,13 @@
                         pageSize: _this.$refs.pagination.size
                     }).then(function(resp) {
                     Loading.hide();
-                    _this.chapters = resp.data.content.list;
-                    // 调用子组件方法重新渲染参数
-                    _this.$refs.pagination.render(pageNum,resp.data.content.total);
-
+                    if(resp.data != ''){
+                        _this.chapters = resp.data.content.list;
+                        // 调用子组件方法重新渲染参数
+                        _this.$refs.pagination.render(pageNum,resp.data.content.total);
+                    }else{
+                        console.log("没有返回数据");
+                    }
                 })
             }
         }
