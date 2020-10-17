@@ -6,14 +6,14 @@ import com.course.server.entity.Chapter;
 import com.course.server.entity.ChapterExample;
 import com.course.server.mapper.ChapterMapper;
 import com.course.server.service.ChapterService;
+import com.course.server.util.CopyUtil;
+import com.course.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.BeanUtils;
+import com.github.pagehelper.util.StringUtil;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,15 +35,34 @@ public class ChapterServiceImpl implements ChapterService {
         ChapterExample example = new ChapterExample();
         List<Chapter> chapters = chapterMapper.selectByExample(example);
         PageInfo pageInfo = new PageInfo(chapters);
-        List<ChapterDto> chapterDtos = new ArrayList<>();
-        if(!CollectionUtils.isEmpty(chapters)){
-            chapters.forEach(item->{
-                ChapterDto chapterDto = new ChapterDto();
-                BeanUtils.copyProperties(item,chapterDto);
-                chapterDtos.add(chapterDto);
-            });
-        }
+        List<ChapterDto> chapterDtos = CopyUtil.copyList(chapters,ChapterDto.class);
         pageDto.setTotal(pageInfo.getTotal());
         pageDto.setList(chapterDtos);
     }
+
+    /**
+     * 新增/编辑入口
+     * @param chapterDto
+     */
+    @Override
+    public void save(ChapterDto chapterDto) {
+        Chapter chapter = CopyUtil.copy(chapterDto, Chapter.class);
+        //新增
+        if(StringUtil.isEmpty(chapter.getId())){
+            chapter.setId(UuidUtil.getShortUuid());
+            chapterMapper.insertSelective(chapter);
+        }else{
+            chapterMapper.updateByPrimaryKey(chapter);
+        }
+    }
+
+    /**
+     * 删除方法
+     * @param id
+     */
+    @Override
+    public void delete(String id) {
+        chapterMapper.deleteByPrimaryKey(id);
+    }
+
 }

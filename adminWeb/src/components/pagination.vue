@@ -110,7 +110,6 @@
           }
         } else {
           let base = 0;
-          debugger
           // 前移
           if (current - 0 > Math.floor((length - 1) / 2)) {
             // 后移
