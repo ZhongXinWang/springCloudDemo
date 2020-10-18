@@ -62,6 +62,12 @@
 				<artifactId>fastjson</artifactId>
 				<version>1.2.74</version>
 			</dependency>
+			<!--freemarker 依赖-->
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>2.3.30</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -123,5 +129,6 @@
 		<module>gateway</module>
         <module>server</module>
         <module>business</module>
+        <module>generator</module>
     </modules>
 </project>
